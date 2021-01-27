@@ -1,0 +1,22 @@
+{
+    "site": {
+      "since": 2021,
+      "slogan": ""
+    },
+  
+    "theme": {
+      "color": "#4b5cc4",
+      "postColor": "#2e4e7e"
+    },
+  
+    "specialTags": {
+      "math": "Math",
+      "hidden": "Hidden"
+    },
+  
+    "menu": [
+      { "name": "新闻", "url": "/news" },
+      { "name": "旧事", "url": "/memories" },
+      { "name": "关于", "url": "/about" }
+    ]
+  }
