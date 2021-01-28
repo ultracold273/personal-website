@@ -21,7 +21,10 @@ const Main = styled.main`
     margin-top: 50px;
 `
 const Layout = (props) => {
-    const [width, setWidth] = useState(document.documentElement.clientWidth)
+    // Outside useEffect, we are not allowed to use `document`
+    // as we do not know whether it is defined.
+    // See https://www.gatsbyjs.com/docs/debugging-html-builds/
+    const [width, setWidth] = useState(1000)
     
     const onResize = useCallback(() => {
         const newWidth = document.documentElement.clientWidth
@@ -31,14 +34,14 @@ const Layout = (props) => {
 
     useEffect(() => {
         window.addEventListener('resize', onResize)
-        return () => { window.removeEventListener('resize', onResize)}
+        return () => { window.removeEventListener('resize', onResize) }
     }, [])
 
     return (
         <Main>
             <Header />
             <Container width={width}>
-            {props.children}
+                {props.children}
             </Container>
         </Main>
     )
