@@ -33,6 +33,7 @@ const Layout = (props) => {
     }, [])
 
     useEffect(() => {
+        setWidth(document.documentElement.clientWidth)
         window.addEventListener('resize', onResize)
         return () => { window.removeEventListener('resize', onResize) }
     }, [])
