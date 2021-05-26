@@ -22,7 +22,7 @@ const BlockquotePara = styled.p`
 
 const markdownRenders = {
     blockquote: (props) => {
-        const text = (props.children[0].props.children[0].props.value).split('\n')
+        const text = (props.children[1].props.children[0]).split('\n')
         return (
             <Blockquote>
                 {text.map((value) => (
@@ -55,7 +55,7 @@ const Markdown: React.FC<IMarkdownProps> = (props) => {
         //     />}
         // </div>
         <div>
-            <ReactMarkdown source={source} renderers={markdownRenders} />
+            <ReactMarkdown children={source} components={markdownRenders} />
         </div>
     );
 }

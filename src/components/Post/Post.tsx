@@ -2,15 +2,15 @@ import React from 'react'
 import styled from '@emotion/styled'
 import { Link } from 'gatsby'
 
-import { theme } from '../../../_config.json'
+import config from '../../../_config.json'
 
 const StyledLink = styled(Link)`
     text-decoration: none;
-    color: ${theme.color};
+    color: ${config.theme.color};
 
     &:focus, &:hover, &:visited, &:link, &:active {
         text-decoration: none;
-        color: ${theme.color};
+        color: ${config.theme.color};
     }
 `
 

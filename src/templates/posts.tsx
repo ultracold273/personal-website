@@ -2,7 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 import { graphql } from "gatsby";
 
-import { specialTags, theme } from "../../_config.json";
+import config from "../../_config.json";
 import Layout from '../components/Layout';
 import Markdown from '../components/Markdown'
 import SEO from '../components/SEO';
@@ -55,12 +55,12 @@ export const pageQuery = graphql`
 const Title = styled.h1`
     margin: 0px;
     padding-bottom: 20px;
-    color: ${theme.postColor}
+    color: ${config.theme.postColor}
 `;
 
 const PostPage = ({ data }) => {
     const post = data.markdownRemark
-    const isMath = post.frontmatter.tags.includes(specialTags.math);
+    const isMath = post.frontmatter.tags.includes(config.specialTags.math);
     return (
         <>
             <SEO post={ post.frontmatter.title } />

@@ -2,7 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 import { Link } from 'gatsby'
 
-import { theme, menu } from '../../../_config.json'
+import config from '../../../_config.json'
 
 const Nav = styled.nav`
     float: right;
@@ -24,11 +24,11 @@ const Item = styled.li`
 
 const StyledLink = styled(Link)`
     text-decoration: none;
-    color: ${theme.color};
+    color: ${config.theme.color};
 
     &:focus, &:hover, &:visited, &:link, &:active {
         text-decoration: none;
-        color: ${theme.color};
+        color: ${config.theme.color};
     }
 `
 
@@ -36,7 +36,7 @@ const Navigation = () => {
     return (
         <Nav>
             <List>
-                {(menu || []).map(({ name, url }) => (
+                {(config.menu || []).map(({ name, url }) => (
                     <Item key={name}>
                         <StyledLink to={url} key={name}>
                             {name}
