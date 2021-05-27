@@ -8,23 +8,18 @@ module.exports = {
   /* Your site config here */
   plugins: [
     `gatsby-plugin-emotion`,
+    `gatsby-plugin-image`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
-          `gatsby-remark-prismjs`,
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 650
-            }
-          },
           {
             resolve: `gatsby-remark-copy-linked-files`,
             options: {
-              destinationDir: `posts/assets`
+              destinationDir: f => `posts/assets/garage_locks/${f.name}`,
+              ignoreFileExtensions: []
             }
           }
         ]
@@ -43,6 +38,6 @@ module.exports = {
         path: `${__dirname}/content/assets`,
         name: `assets`,
       },
-    },
+    }
   ],
 }
