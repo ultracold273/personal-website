@@ -27,15 +27,19 @@ jobs:
 
       # Use the node js version 12.x
       - name: Use Node.js 12.x
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
           node-version: 12.x
-      - run: npm ci
+      
+      - name: 
+        uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: install
       - run: git config --global user.email "lxwei@outlook.com"
       - run: git config --global user.name "Lingxiao"
       - shell: bash
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          npm run deploy
+          yarn deploy
           
