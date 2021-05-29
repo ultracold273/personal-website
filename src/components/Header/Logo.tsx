@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
+import { Link } from 'gatsby'
 
 import config from '../../../_config.json'
 
@@ -14,7 +15,9 @@ const Title = styled.h1`
 
 const Logo = () => {
     return (
-        <Title>Lingxiao</Title>
+        <Link to="/" key="index">
+          <Title>Lingxiao</Title>
+        </Link>
     )
 }
 

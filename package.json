@@ -34,6 +34,8 @@
     "react-helmet": "^6.1.0",
     "react-markdown": "^6.0.2",
     "rehype-katex": "^5.0.0",
+    "remark-copy-linked-files": "^1.5.0",
+    "remark-images": "^2.0.0",
     "remark-math": "^4.0.0"
   },
   "devDependencies": {

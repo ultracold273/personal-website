@@ -3,6 +3,8 @@ import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex"
+// import copyLinkedFiles from "remark-copy-linked-files"
+// import remarkImages from "remark-images"
 import 'katex/dist/katex.min.css'
 
 interface IMarkdownProps {
@@ -21,6 +23,15 @@ const BlockquoteParagraph = styled.p`
     margin: 0;
 `
 
+const StyledImage = styled.img`
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    vertical-align: middle;
+    top: 0;
+    left: 0;
+`
+
 // Take a reference at:
 // https://github.com/remarkjs/react-markdown
 const markdownRenders = {
@@ -35,14 +46,16 @@ const markdownRenders = {
         )
     },
     img: (props) => {
-        console.log(props)
         const { alt, src } = props
-        return (<img alt={alt} src={src} style={ {maxWidth: 650} }/>)
+        return (
+            <StyledImage src={src} alt={alt} />
+        )
     }
 };
 
 const Markdown: React.FC<IMarkdownProps> = (props) => {
     const { source, math = false } = props;
+    // const plugins = [ copyLinkedFiles ]
     return (
         <div>
             {(math) ? 
