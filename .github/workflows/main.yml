@@ -25,16 +25,8 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Use the node js version 14
-      - name: Use Node.js 14
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-      
-      - name: 
-        uses: borales/actions-yarn@v2.0.0
-        with:
-          cmd: install
+      - uses: borales/actions-yarn@v2.0.0
+      - run: yarn install
       - run: git config --global user.email "lxwei@outlook.com"
       - run: git config --global user.name "Lingxiao"
       - shell: bash
