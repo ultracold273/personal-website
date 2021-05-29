@@ -25,8 +25,13 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - uses: borales/actions-yarn@v2.3.0
-      - run: yarn install
+      # Use the node js version 12
+      - name: Use Node.js 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - run: npm install --global yarn
+      - run: yarn --version
       - run: git config --global user.email "lxwei@outlook.com"
       - run: git config --global user.name "Lingxiao"
       - shell: bash
