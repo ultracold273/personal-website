@@ -61,13 +61,13 @@ tags:
 
 ## Reference
 
-[Decoding a garage door opener with an RTL-SDR | by Eoin | Medium](https://medium.com/@eoindcoolest/decoding-a-garage-door-opener-with-an-rtl-sdr-5a47292e2bda#.qu46ncrr3)
+1. [Decoding a garage door opener with an RTL-SDR | by Eoin | Medium](https://medium.com/@eoindcoolest/decoding-a-garage-door-opener-with-an-rtl-sdr-5a47292e2bda#.qu46ncrr3)
 
-[In-phase and quadrature components - Wikipedia](https://en.wikipedia.org/wiki/In-phase_and_quadrature_components)
+2. [In-phase and quadrature components - Wikipedia](https://en.wikipedia.org/wiki/In-phase_and_quadrature_components)
 
-[LPD433 - Wikipedia](https://en.wikipedia.org/wiki/LPD433)
+3. [LPD433 - Wikipedia](https://en.wikipedia.org/wiki/LPD433)
 
-[On–off keying - Wikipedia](https://en.wikipedia.org/wiki/On–off_keying)
+4. [On–off keying - Wikipedia](https://en.wikipedia.org/wiki/On–off_keying)
 
-[Morse code - Wikipedia](https://en.wikipedia.org/wiki/Morse_code)
+5. [Morse code - Wikipedia](https://en.wikipedia.org/wiki/Morse_code)
 
