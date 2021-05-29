@@ -1,8 +1,9 @@
 import styled from '@emotion/styled';
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
-import MathJax from "react-mathjax";
-import RemarkMathPlugin from "remark-math";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex"
+import 'katex/dist/katex.min.css'
 
 interface IMarkdownProps {
   source: string;
@@ -16,46 +17,39 @@ const Blockquote = styled.blockquote`
     border-left: 0.5em #eee solid;
 `
 
-const BlockquotePara = styled.p`
+const BlockquoteParagraph = styled.p`
     margin: 0;
 `
 
+// Take a reference at:
+// https://github.com/remarkjs/react-markdown
 const markdownRenders = {
     blockquote: (props) => {
         const text = (props.children[1].props.children[0]).split('\n')
         return (
             <Blockquote>
                 {text.map((value) => (
-                    <BlockquotePara key={value}>{value}</BlockquotePara>
+                    <BlockquoteParagraph key={value}>{value}</BlockquoteParagraph>
                 ))}
             </Blockquote>
         )
+    },
+    img: (props) => {
+        console.log(props)
+        const { alt, src } = props
+        return (<img alt={alt} src={src} style={ {maxWidth: 650} }/>)
     }
 };
 
 const Markdown: React.FC<IMarkdownProps> = (props) => {
     const { source, math = false } = props;
-    // const markdownProps = (math) ? {
-    //     source: source,
-    //     plugins: [ RemarkMathPlugin ],
-    //     renderers: {
-    //         ...markdownRenders,
-    //         math: (props: { value: string; }) => (<MathJax.Node formula={props.value} />),
-    //         inlineMath: (props: { value: string; }) => (<MathJax.Node inline formula={props.value} />)
-    //     },
-    // } : { source: source, renderers: {...markdownRenders} };
-    // const plugins = [ RemarkMathPlugin ]
     return (
-        // <div>
-        //     {(math) ? <MathJax.Provider input="tex">
-        //         <ReactMarkdown source={source} plugins={plugins} />
-        //         </MathJax.Provider>
-        //     : <ReactMarkdown
-        //         source={source}
-        //     />}
-        // </div>
         <div>
-            <ReactMarkdown children={source} components={markdownRenders} />
+            {(math) ? 
+                <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]} children={source} components={markdownRenders} />
+            : <ReactMarkdown
+                children={source} components={markdownRenders}
+            />}
         </div>
     );
 }
