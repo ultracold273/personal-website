@@ -25,7 +25,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - uses: borales/actions-yarn@v2.0.0
+      - uses: borales/actions-yarn@v2.3.0
       - run: yarn install
       - run: git config --global user.email "lxwei@outlook.com"
       - run: git config --global user.name "Lingxiao"
