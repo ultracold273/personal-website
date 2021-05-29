@@ -34,6 +34,7 @@ jobs:
       - run: yarn --version
       - run: git config --global user.email "lxwei@outlook.com"
       - run: git config --global user.name "Lingxiao"
+      - run: yarn install
       - shell: bash
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
