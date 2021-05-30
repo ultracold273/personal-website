@@ -10,7 +10,8 @@ const Wrapper = styled.header`
     height: 50px;
     width: 100%;
     background-color: #fff;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05)
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+    z-index: 1;
 `
 
 const Header = () => {
