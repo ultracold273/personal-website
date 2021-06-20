@@ -7,9 +7,17 @@ import rehypeKatex from "rehype-katex"
 // import remarkImages from "remark-images"
 import 'katex/dist/katex.min.css'
 
+interface IImageQuery {
+    internal: { contentDigest: string; };
+    name: string;
+    publicURL: string;
+    relativePath: string;
+}
+
 interface IMarkdownProps {
   source: string;
   math?: boolean;
+  images: Array<{ node: IImageQuery }>;
 }
 
 const Blockquote = styled.blockquote`
@@ -54,14 +62,15 @@ const markdownRenders = {
 };
 
 const Markdown: React.FC<IMarkdownProps> = (props) => {
-    const { source, math = false } = props;
+    const { source, math = false, images } = props;
     // const plugins = [ copyLinkedFiles ]
+    const transfromImageUri = (src: string, _: string, __: string) => images.find(imageNode => src.endsWith(imageNode.node.relativePath)).node.publicURL
     return (
         <div>
             {(math) ? 
-                <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]} children={source} components={markdownRenders} />
+                <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]} children={source} components={markdownRenders} transformImageUri={transfromImageUri} />
             : <ReactMarkdown
-                children={source} components={markdownRenders}
+                children={source} components={markdownRenders} transformImageUri={transfromImageUri}
             />}
         </div>
     );

@@ -18,6 +18,18 @@ export const pageQuery = graphql`
                 title
             }
         }
+        allFile(filter: {extension: {in: ["png", "jpg", "jpeg", "bmp", "tiff"]}}) {
+            edges {
+                node {
+                    internal {
+                        contentDigest
+                    }
+                    name
+                    publicURL
+                    relativePath
+                }
+            }
+        }
         markdownRemark(id: { eq: $id }) {
             id
             excerpt(pruneLength: 160)
@@ -61,12 +73,13 @@ const Title = styled.h1`
 const PostPage = ({ data }) => {
     const post = data.markdownRemark
     const isMath = post.frontmatter.tags.includes(config.specialTags.math);
+    const images = data.allFile.edges
     return (
         <>
             <SEO post={ post.frontmatter.title } />
             <Layout>
                 <Title>{post.frontmatter.title}</Title>
-                <Markdown source={post.rawMarkdownBody} math={isMath} />
+                <Markdown source={post.rawMarkdownBody} math={isMath} images={images}/>
             </Layout>
         </>
     )
